@@ -1,4 +1,4 @@
-import { Context, FacetSearchResult, useFacetFactory } from '@vue-storefront/core';
+import { useFacetFactory, FacetSearchResult, Context } from '@vue-storefront/core';
 import { AttributeType } from '@vue-storefront/commercetools-api';
 import { enhanceProduct, getFiltersFromProductsAttributes } from './../helpers/internals';
 import { ProductVariant } from './../types/GraphQL';
