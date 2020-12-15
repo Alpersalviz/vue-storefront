@@ -1,4 +1,4 @@
-import { useFacetFactory, FacetSearchResult, Context } from '@vue-storefront/core';
+import { Context, FacetSearchResult, useFacetFactory } from '@vue-storefront/core';
 import { AttributeType } from '@vue-storefront/commercetools-api';
 import { enhanceProduct, getFiltersFromProductsAttributes } from './../helpers/internals';
 import { ProductVariant } from './../types/GraphQL';
@@ -16,7 +16,7 @@ const factoryParams = {
     const inputFilters = params.input.filters;
     const filters = Object.keys(inputFilters).reduce((prev, curr) => ([
       ...prev,
-      ...inputFilters[curr].map(value => ({ type: AttributeType.STRING, name: curr, value }))
+      ...inputFilters[curr].map(value => ({ type: curr === 'color' ? AttributeType.LOCALIZED_ENUM : AttributeType.STRING, name: curr, value }))
     ]), []);
 
     const productResponse = await context.$ct.api.getProduct({
